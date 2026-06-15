@@ -1,0 +1,31 @@
+[gd_scene load_steps=22 format=3 uid="uid://buyjahfa5ftp"]
+
+[ext_resource type="Texture2D" uid="uid://5ks4dgborgmo" path="res://assets/dice/D20/d20_white_1.png" id="1_662nw"]
+[ext_resource type="Script" uid="uid://cr13mcbmm18dk" path="res://scripts/Die.gd" id="2_ncjqf"]
+[ext_resource type="Texture2D" uid="uid://ydl7ymxwg74k" path="res://assets/dice/D20/d20_white_2.png" id="3_pe57k"]
+[ext_resource type="Texture2D" uid="uid://bq31md36s2fj2" path="res://assets/dice/D20/d20_white_3.png" id="4_gl76a"]
+[ext_resource type="Texture2D" uid="uid://oiyg3k3yuh6u" path="res://assets/dice/D20/d20_white_4.png" id="5_j6iaj"]
+[ext_resource type="Texture2D" uid="uid://dady4r04i2n11" path="res://assets/dice/D20/d20_white_5.png" id="6_bvci3"]
+[ext_resource type="Texture2D" uid="uid://bdf4m3htq1ucf" path="res://assets/dice/D20/d20_white_6.png" id="7_d158t"]
+[ext_resource type="Texture2D" uid="uid://52cnetenctcl" path="res://assets/dice/D20/d20_white_7.png" id="8_w4ysh"]
+[ext_resource type="Texture2D" uid="uid://c3tsyt8eb2uva" path="res://assets/dice/D20/d20_white_8.png" id="9_cuxf1"]
+[ext_resource type="Texture2D" uid="uid://cb3sm5ox2ialw" path="res://assets/dice/D20/d20_white_9.png" id="10_xqb6i"]
+[ext_resource type="Texture2D" uid="uid://br2dc3mjwj5cd" path="res://assets/dice/D20/d20_white_10.png" id="11_dclno"]
+[ext_resource type="Texture2D" uid="uid://d3q78rs6srlwo" path="res://assets/dice/D20/d20_white_11.png" id="12_y7ff4"]
+[ext_resource type="Texture2D" uid="uid://bgfxae2ckhyt4" path="res://assets/dice/D20/d20_white_12.png" id="13_cjnkt"]
+[ext_resource type="Texture2D" uid="uid://dpg4xpvx5be2m" path="res://assets/dice/D20/d20_white_13.png" id="14_8n3fm"]
+[ext_resource type="Texture2D" uid="uid://cgpx7heyf6n4n" path="res://assets/dice/D20/d20_white_14.png" id="15_c5ccj"]
+[ext_resource type="Texture2D" uid="uid://bc67btbiv3cew" path="res://assets/dice/D20/d20_white_15.png" id="16_yxb5n"]
+[ext_resource type="Texture2D" uid="uid://dliyavuinrscc" path="res://assets/dice/D20/d20_white_16.png" id="17_xj83a"]
+[ext_resource type="Texture2D" uid="uid://ccaamp8sfh1lt" path="res://assets/dice/D20/d20_white_17.png" id="18_fw6ff"]
+[ext_resource type="Texture2D" uid="uid://duvonulu8q53g" path="res://assets/dice/D20/d20_white_18.png" id="19_oxm28"]
+[ext_resource type="Texture2D" uid="uid://m70u2gwqjh7p" path="res://assets/dice/D20/d20_white_19.png" id="20_x3rwm"]
+[ext_resource type="Texture2D" uid="uid://dalb8bfp681av" path="res://assets/dice/D20/d20_white_20.png" id="21_vbgc1"]
+
+[node name="normal_d20" type="TextureRect"]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("1_662nw")
+expand_mode = 1
+script = ExtResource("2_ncjqf")
+textures = Array[Texture2D]([ExtResource("1_662nw"), ExtResource("3_pe57k"), ExtResource("4_gl76a"), ExtResource("5_j6iaj"), ExtResource("6_bvci3"), ExtResource("7_d158t"), ExtResource("8_w4ysh"), ExtResource("9_cuxf1"), ExtResource("10_xqb6i"), ExtResource("11_dclno"), ExtResource("12_y7ff4"), ExtResource("13_cjnkt"), ExtResource("14_8n3fm"), ExtResource("15_c5ccj"), ExtResource("16_yxb5n"), ExtResource("17_xj83a"), ExtResource("18_fw6ff"), ExtResource("19_oxm28"), ExtResource("20_x3rwm"), ExtResource("21_vbgc1")])

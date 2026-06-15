@@ -1,0 +1,275 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmv8auki5fu38"]
+
+[ext_resource type="Script" uid="uid://dpllwvkkhwnvg" path="res://scripts/title_screen.gd" id="1_e54dn"]
+[ext_resource type="Texture2D" uid="uid://drna8h0hvbrdj" path="res://assets/buttonmen_boxart.jpg" id="1_fgkus"]
+[ext_resource type="Script" uid="uid://b6qs7rdw6152v" path="res://scripts/new_game_button.gd" id="2_mgrm8"]
+[ext_resource type="Script" uid="uid://c4k2b7nqdua8v" path="res://scripts/quit_button.gd" id="3_s4lrb"]
+[ext_resource type="Script" uid="uid://bve7tkjctjtuf" path="res://scripts/mode_selection_button.gd" id="4_e54dn"]
+[ext_resource type="Script" uid="uid://br5ca3i1ns4co" path="res://scripts/back_button.gd" id="4_mgrm8"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e54dn")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Image" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fgkus")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InitialButtons" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.33
+anchor_bottom = 1.0
+
+[node name="NewGameButton" type="ColorRect" parent="InitialButtons" node_paths=PackedStringArray("submenu")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_mgrm8")
+submenu = NodePath("../../GameModeButtons")
+from_color = Color(0, 0, 0.1254902, 1)
+to_color = Color(0, 0, 0.7176471, 1)
+animation_time = 0.7
+
+[node name="Label" type="Label" parent="InitialButtons/NewGameButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="ColorRect" parent="InitialButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 15.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_s4lrb")
+from_color = Color(0, 0, 0.1254902, 1)
+to_color = Color(0, 0, 0.7176471, 1)
+animation_time = 0.7
+
+[node name="Label" type="Label" parent="InitialButtons/QuitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameModeButtons" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_right = 0.33
+anchor_bottom = 1.0
+
+[node name="ClassicModeButton" type="ColorRect" parent="GameModeButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_e54dn")
+character_selection_scene = "res://scenes/character_selection_screen.tscn"
+from_color = Color(0, 0, 0.1254902, 1)
+to_color = Color(0, 0, 0.7176471, 1)
+animation_time = 0.7
+
+[node name="Label" type="Label" parent="GameModeButtons/ClassicModeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Classic Mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClassicTagTeamModeButton" type="ColorRect" parent="GameModeButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 15.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_e54dn")
+mode = 1
+character_selection_scene = "res://scenes/character_selection_screen.tscn"
+from_color = Color(0, 0, 0.1254902, 1)
+to_color = Color(0, 0, 0.7176471, 1)
+animation_time = 0.7
+
+[node name="Label" type="Label" parent="GameModeButtons/ClassicTagTeamModeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Classic (Tag Team)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TournamentModeButton" type="ColorRect" parent="GameModeButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 45.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_e54dn")
+mode = 2
+character_selection_scene = "res://scenes/character_selection_screen.tscn"
+from_color = Color(0, 0, 0.1254902, 1)
+to_color = Color(0, 0, 0.7176471, 1)
+animation_time = 0.7
+
+[node name="Label" type="Label" parent="GameModeButtons/TournamentModeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tournament Mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TagTournamentModeButton" type="ColorRect" parent="GameModeButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 75.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_e54dn")
+mode = 3
+character_selection_scene = "res://scenes/character_selection_screen.tscn"
+from_color = Color(0, 0, 0.1254902, 1)
+to_color = Color(0, 0, 0.7176471, 1)
+animation_time = 0.7
+
+[node name="Label" type="Label" parent="GameModeButtons/TagTournamentModeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tournament (Tag Team)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="ColorRect" parent="GameModeButtons" node_paths=PackedStringArray("previous_menu")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 105.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_mgrm8")
+previous_menu = NodePath("../../InitialButtons")
+from_color = Color(0, 0, 0.1254902, 1)
+to_color = Color(0, 0, 0.7176471, 1)
+animation_time = 0.7
+
+[node name="Label" type="Label" parent="GameModeButtons/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="InitialButtons/NewGameButton" to="InitialButtons/NewGameButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="InitialButtons/NewGameButton" to="InitialButtons/NewGameButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InitialButtons/NewGameButton" to="InitialButtons/NewGameButton" method="_on_mouse_exited"]
+[connection signal="gui_input" from="InitialButtons/QuitButton" to="InitialButtons/QuitButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="InitialButtons/QuitButton" to="InitialButtons/QuitButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InitialButtons/QuitButton" to="InitialButtons/QuitButton" method="_on_mouse_exited"]
+[connection signal="gui_input" from="GameModeButtons/ClassicModeButton" to="GameModeButtons/ClassicModeButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="GameModeButtons/ClassicModeButton" to="GameModeButtons/ClassicModeButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GameModeButtons/ClassicModeButton" to="GameModeButtons/ClassicModeButton" method="_on_mouse_exited"]
+[connection signal="gui_input" from="GameModeButtons/ClassicTagTeamModeButton" to="GameModeButtons/ClassicTagTeamModeButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="GameModeButtons/ClassicTagTeamModeButton" to="GameModeButtons/ClassicTagTeamModeButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GameModeButtons/ClassicTagTeamModeButton" to="GameModeButtons/ClassicTagTeamModeButton" method="_on_mouse_exited"]
+[connection signal="gui_input" from="GameModeButtons/TournamentModeButton" to="GameModeButtons/TournamentModeButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="GameModeButtons/TournamentModeButton" to="GameModeButtons/TournamentModeButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GameModeButtons/TournamentModeButton" to="GameModeButtons/TournamentModeButton" method="_on_mouse_exited"]
+[connection signal="gui_input" from="GameModeButtons/TagTournamentModeButton" to="GameModeButtons/TagTournamentModeButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="GameModeButtons/TagTournamentModeButton" to="GameModeButtons/TagTournamentModeButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GameModeButtons/TagTournamentModeButton" to="GameModeButtons/TagTournamentModeButton" method="_on_mouse_exited"]
+[connection signal="gui_input" from="GameModeButtons/BackButton" to="GameModeButtons/BackButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="GameModeButtons/BackButton" to="GameModeButtons/BackButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GameModeButtons/BackButton" to="GameModeButtons/BackButton" method="_on_mouse_exited"]

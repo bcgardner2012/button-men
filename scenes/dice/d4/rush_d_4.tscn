@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://4gc4ej5qjqlh"]
+
+[ext_resource type="Texture2D" uid="uid://bm1dmfdrdusyp" path="res://assets/dice/D4/d4_yellow_1.png" id="1_h4bqt"]
+[ext_resource type="Script" uid="uid://cr13mcbmm18dk" path="res://scripts/Die.gd" id="2_lk6de"]
+[ext_resource type="Texture2D" uid="uid://bo6xxker8rh1q" path="res://assets/dice/D4/d4_yellow_2.png" id="3_lk6de"]
+[ext_resource type="Texture2D" uid="uid://d27akhk4v413s" path="res://assets/dice/D4/d4_yellow_3.png" id="4_xkobn"]
+[ext_resource type="Texture2D" uid="uid://v137ka7gy80q" path="res://assets/dice/D4/d4_yellow_4.png" id="5_6dpg6"]
+
+[node name="rush_d4" type="TextureRect"]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("1_h4bqt")
+expand_mode = 1
+script = ExtResource("2_lk6de")
+textures = Array[Texture2D]([ExtResource("1_h4bqt"), ExtResource("3_lk6de"), ExtResource("4_xkobn"), ExtResource("5_6dpg6")])
+type = 3

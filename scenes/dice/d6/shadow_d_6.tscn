@@ -1,0 +1,18 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd62rloftgi17"]
+
+[ext_resource type="Texture2D" uid="uid://bn7oij6bfe0yb" path="res://assets/dice/D6/D6N_blue_1.png" id="1_c3wjl"]
+[ext_resource type="Script" uid="uid://cr13mcbmm18dk" path="res://scripts/Die.gd" id="2_q0iy4"]
+[ext_resource type="Texture2D" uid="uid://biga5fokmrex5" path="res://assets/dice/D6/D6N_blue_2.png" id="3_q0iy4"]
+[ext_resource type="Texture2D" uid="uid://oidfgihsuapg" path="res://assets/dice/D6/D6N_blue_3.png" id="4_235sv"]
+[ext_resource type="Texture2D" uid="uid://drkg4lti62d2s" path="res://assets/dice/D6/D6N_blue_4.png" id="5_4mhjl"]
+[ext_resource type="Texture2D" uid="uid://dhp6dobfwqkvn" path="res://assets/dice/D6/D6N_blue_5.png" id="6_nfgwo"]
+[ext_resource type="Texture2D" uid="uid://b26btnq761bhl" path="res://assets/dice/D6/D6N_blue_6.png" id="7_d480k"]
+
+[node name="shadow_d6" type="TextureRect"]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("1_c3wjl")
+expand_mode = 1
+script = ExtResource("2_q0iy4")
+textures = Array[Texture2D]([ExtResource("1_c3wjl"), ExtResource("3_q0iy4"), ExtResource("4_235sv"), ExtResource("5_4mhjl"), ExtResource("6_nfgwo"), ExtResource("7_d480k")])
+type = 1

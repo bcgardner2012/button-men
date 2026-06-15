@@ -1,0 +1,24 @@
+[gd_scene load_steps=14 format=3 uid="uid://c6owi5j0owdrb"]
+
+[ext_resource type="Script" uid="uid://cr13mcbmm18dk" path="res://scripts/Die.gd" id="2_yk7in"]
+[ext_resource type="Texture2D" uid="uid://ck1gxy66fr0g1" path="res://assets/dice/D12/d12_yellow_1.png" id="3_yk7in"]
+[ext_resource type="Texture2D" uid="uid://dyy16w3gfmdh7" path="res://assets/dice/D12/d12_yellow_2.png" id="4_nxwtj"]
+[ext_resource type="Texture2D" uid="uid://b7uw346qam0ux" path="res://assets/dice/D12/d12_yellow_3.png" id="5_3qf2w"]
+[ext_resource type="Texture2D" uid="uid://cppw4am8n8ysc" path="res://assets/dice/D12/d12_yellow_4.png" id="6_3bbd7"]
+[ext_resource type="Texture2D" uid="uid://bogh5bb8oqg4w" path="res://assets/dice/D12/d12_yellow_5.png" id="7_weqr4"]
+[ext_resource type="Texture2D" uid="uid://dqgv2q0hq15ot" path="res://assets/dice/D12/d12_yellow_6.png" id="8_jwoby"]
+[ext_resource type="Texture2D" uid="uid://dccg81yv8k7v" path="res://assets/dice/D12/d12_yellow_7.png" id="9_fu1dj"]
+[ext_resource type="Texture2D" uid="uid://c2tfhfvyud3xn" path="res://assets/dice/D12/d12_yellow_8.png" id="10_k4jbr"]
+[ext_resource type="Texture2D" uid="uid://cfvf3dar1aqjv" path="res://assets/dice/D12/d12_yellow_9.png" id="11_od7sc"]
+[ext_resource type="Texture2D" uid="uid://d163np0jb2a08" path="res://assets/dice/D12/d12_yellow_10.png" id="12_kgtsc"]
+[ext_resource type="Texture2D" uid="uid://bdwe3bd50g2rj" path="res://assets/dice/D12/d12_yellow_11.png" id="13_c0rds"]
+[ext_resource type="Texture2D" uid="uid://cnnd4dt64jurd" path="res://assets/dice/D12/d12_yellow_12.png" id="14_dx1c8"]
+
+[node name="rush_d12" type="TextureRect"]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("3_yk7in")
+expand_mode = 1
+script = ExtResource("2_yk7in")
+textures = Array[Texture2D]([ExtResource("3_yk7in"), ExtResource("4_nxwtj"), ExtResource("5_3qf2w"), ExtResource("6_3bbd7"), ExtResource("7_weqr4"), ExtResource("8_jwoby"), ExtResource("9_fu1dj"), ExtResource("10_k4jbr"), ExtResource("11_od7sc"), ExtResource("12_kgtsc"), ExtResource("13_c0rds"), ExtResource("14_dx1c8")])
+type = 3

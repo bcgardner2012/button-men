@@ -1,0 +1,316 @@
+[gd_scene load_steps=54 format=3 uid="uid://h0tkavgsur3u"]
+
+[ext_resource type="PackedScene" uid="uid://bkqhk6hh1jtda" path="res://scenes/character_choice.tscn" id="1_70qf6"]
+[ext_resource type="Script" uid="uid://clm26km1ee108" path="res://scripts/character_selection_grid.gd" id="1_glnfu"]
+[ext_resource type="Script" uid="uid://dsvxcl2afq2n" path="res://scripts/character_selection_screen.gd" id="1_r1o3c"]
+[ext_resource type="Texture2D" uid="uid://bbqs34tgey2gf" path="res://assets/characters/choices/tony_1.jpg" id="2_0oen6"]
+[ext_resource type="Texture2D" uid="uid://d2xheb87qc5a" path="res://assets/characters/choices/tanya_2.jpg" id="3_gxr2e"]
+[ext_resource type="Texture2D" uid="uid://b6q3uu0kwh5wf" path="res://assets/characters/portraits/button-men_1.jpg" id="3_rgxyb"]
+[ext_resource type="Texture2D" uid="uid://bccgcwnk2cbnv" path="res://assets/characters/choices/hollis_3.jpg" id="4_7ofbe"]
+[ext_resource type="Texture2D" uid="uid://c5pjg11u3df1c" path="res://assets/characters/choices/delia_4.jpg" id="5_7k72v"]
+[ext_resource type="Texture2D" uid="uid://d3hn4mkl5snti" path="res://assets/characters/portraits/button-men_2.jpg" id="5_glnfu"]
+[ext_resource type="Texture2D" uid="uid://cgwt06agip5yh" path="res://assets/characters/choices/porter_5.jpg" id="6_7bd6v"]
+[ext_resource type="Texture2D" uid="uid://diehkgo0gp1y6" path="res://assets/characters/choices/donna_6.jpg" id="7_0bhdp"]
+[ext_resource type="Texture2D" uid="uid://s2fb6i7wr6fg" path="res://assets/characters/portraits/button-men_3.jpg" id="7_r1o3c"]
+[ext_resource type="Texture2D" uid="uid://oh3jleu07afn" path="res://assets/characters/choices/mondo_7.jpg" id="8_gch1u"]
+[ext_resource type="Texture2D" uid="uid://dlgvyvnbb7ifd" path="res://assets/characters/portraits/button-men_4.jpg" id="9_fwitl"]
+[ext_resource type="Texture2D" uid="uid://b14sy3sexynp2" path="res://assets/characters/choices/prentice_8.jpg" id="9_vv42o"]
+[ext_resource type="Texture2D" uid="uid://dapo6aa76ocnt" path="res://assets/characters/choices/dietrich_9.jpg" id="10_e4dtk"]
+[ext_resource type="Texture2D" uid="uid://dy64qtbejshls" path="res://assets/characters/choices/sally_10.jpg" id="11_dan2s"]
+[ext_resource type="Texture2D" uid="uid://dbon052ix33dh" path="res://assets/characters/portraits/button-men_5.jpg" id="11_xmx6v"]
+[ext_resource type="Texture2D" uid="uid://c6b4f5r30djf8" path="res://assets/characters/choices/stacie_11.jpg" id="12_yvds4"]
+[ext_resource type="Texture2D" uid="uid://cjli0uj080wr" path="res://assets/characters/choices/beatrice_12.jpg" id="13_0gdya"]
+[ext_resource type="Texture2D" uid="uid://c5me5arcjpgn6" path="res://assets/characters/portraits/button-men_6.jpg" id="13_skgef"]
+[ext_resource type="Texture2D" uid="uid://dcgsxfithoh6f" path="res://assets/characters/choices/jocasta_13.jpg" id="14_0dn68"]
+[ext_resource type="Texture2D" uid="uid://31iym13ly7fx" path="res://assets/characters/choices/gilroy_14.jpg" id="15_alhs7"]
+[ext_resource type="Texture2D" uid="uid://cvq4owpbpuq1h" path="res://assets/characters/portraits/button-men_7.jpg" id="15_t5l0d"]
+[ext_resource type="Texture2D" uid="uid://ovkv6t60pq0q" path="res://assets/characters/choices/ladyk_15.jpg" id="16_h23ov"]
+[ext_resource type="Texture2D" uid="uid://dbmrl8omw8pr6" path="res://assets/characters/portraits/button-men_8.jpg" id="17_di6vx"]
+[ext_resource type="Texture2D" uid="uid://ic4olkgem8q7" path="res://assets/characters/choices/keegan_16.jpg" id="17_smuu7"]
+[ext_resource type="Texture2D" uid="uid://din2o4x3lxjp2" path="res://assets/characters/choices/benvenito_17.jpg" id="18_gf0r3"]
+[ext_resource type="Texture2D" uid="uid://vt7x47mjj7mp" path="res://assets/characters/portraits/button-men_9.jpg" id="19_3fnl2"]
+[ext_resource type="Texture2D" uid="uid://dxh2gikniyra6" path="res://assets/characters/choices/jerry_18.jpg" id="19_48aoj"]
+[ext_resource type="Texture2D" uid="uid://7vjn7o1dvhko" path="res://assets/characters/portraits/button-men_10.jpg" id="21_vhxav"]
+[ext_resource type="Texture2D" uid="uid://d700toiuh532" path="res://assets/characters/portraits/button-men_11.jpg" id="23_jisuo"]
+[ext_resource type="Texture2D" uid="uid://chn4h51gvhp4t" path="res://assets/characters/portraits/button-men_12.jpg" id="25_ixhp0"]
+[ext_resource type="Texture2D" uid="uid://c3kbvtm1w37mm" path="res://assets/characters/portraits/button-men_13.jpg" id="27_d6glw"]
+[ext_resource type="Texture2D" uid="uid://swe4ixbfym8f" path="res://assets/characters/portraits/button-men_14.jpg" id="29_ugi10"]
+[ext_resource type="Texture2D" uid="uid://df3tf3st8ai76" path="res://assets/characters/portraits/button-men_15.jpg" id="31_8mbyy"]
+[ext_resource type="Texture2D" uid="uid://1jmvjjo8ucgj" path="res://assets/characters/portraits/button-men_16.jpg" id="33_8u0pg"]
+[ext_resource type="Texture2D" uid="uid://dgw0qoc8whckt" path="res://assets/characters/portraits/button-men_17.jpg" id="35_iqv53"]
+[ext_resource type="Texture2D" uid="uid://d1qpaeexx0o7t" path="res://assets/characters/portraits/button-men_18.jpg" id="37_anuij"]
+[ext_resource type="Texture2D" uid="uid://ocogvbup7e6p" path="res://assets/characters/choices/brand_19.jpg" id="40_xmx6v"]
+[ext_resource type="Texture2D" uid="uid://bsx5f2mcvvl7c" path="res://assets/characters/portraits/brand.jpg" id="41_skgef"]
+[ext_resource type="Texture2D" uid="uid://dec8et3yli0fs" path="res://assets/characters/choices/montserrat_20.jpg" id="42_t5l0d"]
+[ext_resource type="Texture2D" uid="uid://bcanyp2d4d2jf" path="res://assets/characters/portraits/montserrat.jpg" id="43_di6vx"]
+[ext_resource type="Texture2D" uid="uid://b6sj4rqps3h5n" path="res://assets/characters/choices/mississippi_21.jpg" id="44_3fnl2"]
+[ext_resource type="Texture2D" uid="uid://drngc2o5lh58" path="res://assets/characters/portraits/mississippi.jpg" id="45_vhxav"]
+[ext_resource type="Texture2D" uid="uid://bcomjhbik6uwh" path="res://assets/characters/choices/jesse_22.jpg" id="46_jisuo"]
+[ext_resource type="Texture2D" uid="uid://dbd71qtgxlqxe" path="res://assets/characters/portraits/jesse.jpg" id="47_ixhp0"]
+[ext_resource type="Texture2D" uid="uid://ciqnpujtic1hp" path="res://assets/characters/choices/henry_23.jpg" id="48_d6glw"]
+[ext_resource type="Texture2D" uid="uid://cortre2sumbso" path="res://assets/characters/portraits/henry.jpg" id="49_ugi10"]
+[ext_resource type="Texture2D" uid="uid://vdk5rjnrb8ri" path="res://assets/characters/choices/raven_choice.jpg" id="50_iqv53"]
+[ext_resource type="Texture2D" uid="uid://bcro0i4hegxam" path="res://assets/characters/portraits/raven.jpg" id="51_anuij"]
+[ext_resource type="Texture2D" uid="uid://disr42u3njedg" path="res://assets/characters/choices/starfire_choice.jpg" id="52_nbhe3"]
+[ext_resource type="Texture2D" uid="uid://cj2hhqwme42am" path="res://assets/characters/portraits/starfire.jpg" id="53_crsn2"]
+
+[node name="CharacterSelectionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r1o3c")
+title_screen = "res://scenes/title_screen.tscn"
+combat_screen = "res://scenes/combat_screen.tscn"
+
+[node name="Player1Texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 1.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Player2Texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CharacterGrid" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.275
+anchor_right = 0.75
+anchor_bottom = 0.9
+script = ExtResource("1_glnfu")
+
+[node name="GridContainer" type="GridContainer" parent="CharacterGrid"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 10
+
+[node name="CharacterChoice" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Tony"
+texture = ExtResource("2_0oen6")
+portrait = ExtResource("3_rgxyb")
+dice = Array[String](["8", "8", "20", "20", "X"])
+
+[node name="CharacterChoice2" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Tanya"
+texture = ExtResource("3_gxr2e")
+portrait = ExtResource("5_glnfu")
+dice = Array[String](["4", "6", "12", "X", "X"])
+
+[node name="CharacterChoice3" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Fillis"
+texture = ExtResource("4_7ofbe")
+portrait = ExtResource("7_r1o3c")
+dice = Array[String](["6", "6", "20", "X", "X"])
+
+[node name="CharacterChoice4" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Delia"
+texture = ExtResource("5_7k72v")
+portrait = ExtResource("9_fwitl")
+dice = Array[String](["4", "4", "12", "20", "X"])
+
+[node name="CharacterChoice5" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Porter"
+texture = ExtResource("6_7bd6v")
+portrait = ExtResource("11_xmx6v")
+dice = Array[String](["8", "12", "12", "20", "X"])
+
+[node name="CharacterChoice6" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Donna"
+texture = ExtResource("7_0bhdp")
+portrait = ExtResource("13_skgef")
+dice = Array[String](["4", "6", "12", "20", "X"])
+
+[node name="CharacterChoice7" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Mondo"
+texture = ExtResource("8_gch1u")
+portrait = ExtResource("15_t5l0d")
+dice = Array[String](["6", "12", "20", "20P", "X"])
+
+[node name="CharacterChoice8" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Prentice"
+texture = ExtResource("9_vv42o")
+portrait = ExtResource("17_di6vx")
+dice = Array[String](["4P", "6", "12P", "20", "X"])
+
+[node name="CharacterChoice9" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Dietrich"
+texture = ExtResource("10_e4dtk")
+portrait = ExtResource("19_3fnl2")
+dice = Array[String](["8P", "8P", "20", "20", "X"])
+
+[node name="CharacterChoice10" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Sally"
+texture = ExtResource("11_dan2s")
+portrait = ExtResource("21_vhxav")
+dice = Array[String](["8", "8P", "12", "20", "X"])
+
+[node name="CharacterChoice11" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Stacie"
+texture = ExtResource("12_yvds4")
+portrait = ExtResource("23_jisuo")
+dice = Array[String](["6", "8P", "12P", "20P", "XP"])
+
+[node name="CharacterChoice12" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Beatrice"
+texture = ExtResource("13_0gdya")
+portrait = ExtResource("25_ixhp0")
+dice = Array[String](["4", "4", "12", "12", "XP"])
+
+[node name="CharacterChoice13" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Jocasta"
+texture = ExtResource("14_0dn68")
+portrait = ExtResource("27_d6glw")
+dice = Array[String](["6", "12", "12S", "20", "XS"])
+
+[node name="CharacterChoice14" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Gilroy"
+texture = ExtResource("15_alhs7")
+portrait = ExtResource("29_ugi10")
+dice = Array[String](["6", "8S", "8S", "20", "X"])
+
+[node name="CharacterChoice15" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Lady K"
+texture = ExtResource("16_h23ov")
+portrait = ExtResource("31_8mbyy")
+dice = Array[String](["4", "6S", "6S", "8", "X"])
+
+[node name="CharacterChoice16" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Keegan"
+texture = ExtResource("17_smuu7")
+portrait = ExtResource("33_8u0pg")
+dice = Array[String](["8", "8S", "12S", "20", "X"])
+
+[node name="CharacterChoice17" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Benvenito"
+texture = ExtResource("18_gf0r3")
+portrait = ExtResource("35_iqv53")
+dice = Array[String](["4", "8", "8", "20S", "XS"])
+
+[node name="CharacterChoice18" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Jerry"
+texture = ExtResource("19_48aoj")
+portrait = ExtResource("37_anuij")
+dice = Array[String](["6", "8", "8", "12S", "X"])
+
+[node name="CharacterChoice19" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Brand"
+texture = ExtResource("40_xmx6v")
+portrait = ExtResource("41_skgef")
+dice = Array[String](["4S", "6", "12S", "20S", "X"])
+
+[node name="CharacterChoice20" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Montserrat"
+texture = ExtResource("42_t5l0d")
+portrait = ExtResource("43_di6vx")
+dice = Array[String](["4", "6R", "8R", "12R", "XR"])
+
+[node name="CharacterChoice21" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Mississippi"
+texture = ExtResource("44_3fnl2")
+portrait = ExtResource("45_vhxav")
+dice = Array[String](["6R", "8R", "12R", "20R", "XR"])
+
+[node name="CharacterChoice22" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Jesse"
+texture = ExtResource("46_jisuo")
+portrait = ExtResource("47_ixhp0")
+dice = Array[String](["4R", "4", "20", "20R", "X"])
+
+[node name="CharacterChoice23" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Henry"
+texture = ExtResource("48_d6glw")
+portrait = ExtResource("49_ugi10")
+dice = Array[String](["4", "8", "12R", "20R", "XR"])
+
+[node name="CharacterChoice24" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Raven"
+texture = ExtResource("50_iqv53")
+portrait = ExtResource("51_anuij")
+dice = Array[String](["4", "6", "8", "8S", "XS"])
+
+[node name="CharacterChoice25" parent="CharacterGrid/GridContainer" instance=ExtResource("1_70qf6")]
+layout_mode = 2
+character_name = "Starfire"
+texture = ExtResource("52_nbhe3")
+portrait = ExtResource("53_crsn2")
+dice = Array[String](["6", "8", "12", "12R", "XR"])
+
+[node name="GoButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_right = 17.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Go!"
+
+[node name="LoadingScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="LoadingScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading..."
+
+[connection signal="pressed" from="GoButton" to="." method="_on_go_button_pressed"]

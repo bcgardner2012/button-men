@@ -1,0 +1,20 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqgna3jbvih5k"]
+
+[ext_resource type="Texture2D" uid="uid://bw58yv6mcqgoj" path="res://assets/dice/D8/d8_green_1.png" id="1_wqai5"]
+[ext_resource type="Script" uid="uid://cr13mcbmm18dk" path="res://scripts/Die.gd" id="2_qh6re"]
+[ext_resource type="Texture2D" uid="uid://c7157ic6ph84d" path="res://assets/dice/D8/d8_green_2.png" id="3_qh6re"]
+[ext_resource type="Texture2D" uid="uid://jgye3ha2pk24" path="res://assets/dice/D8/d8_green_3.png" id="4_hx8ev"]
+[ext_resource type="Texture2D" uid="uid://05g6sto611oq" path="res://assets/dice/D8/d8_green_4.png" id="5_0jvh0"]
+[ext_resource type="Texture2D" uid="uid://diiudbkevs6an" path="res://assets/dice/D8/d8_green_5.png" id="6_4g30e"]
+[ext_resource type="Texture2D" uid="uid://c657rftjcqwd0" path="res://assets/dice/D8/d8_green_6.png" id="7_srint"]
+[ext_resource type="Texture2D" uid="uid://n8ekqqn4y0ef" path="res://assets/dice/D8/d8_green_7.png" id="8_yfpmt"]
+[ext_resource type="Texture2D" uid="uid://c64hx77ugenyd" path="res://assets/dice/D8/d8_green_8.png" id="9_1gg0s"]
+
+[node name="poison_d8" type="TextureRect"]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("1_wqai5")
+expand_mode = 1
+script = ExtResource("2_qh6re")
+textures = Array[Texture2D]([ExtResource("1_wqai5"), ExtResource("3_qh6re"), ExtResource("4_hx8ev"), ExtResource("5_0jvh0"), ExtResource("6_4g30e"), ExtResource("7_srint"), ExtResource("8_yfpmt"), ExtResource("9_1gg0s")])
+type = 2

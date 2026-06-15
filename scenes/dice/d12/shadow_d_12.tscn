@@ -1,0 +1,24 @@
+[gd_scene load_steps=14 format=3 uid="uid://dlxbt6n3xccqm"]
+
+[ext_resource type="Texture2D" uid="uid://bxmrfcfplvax3" path="res://assets/dice/D12/d12_blue_1.png" id="1_scmxm"]
+[ext_resource type="Script" uid="uid://cr13mcbmm18dk" path="res://scripts/Die.gd" id="2_ocs5n"]
+[ext_resource type="Texture2D" uid="uid://b28iux7qbl8my" path="res://assets/dice/D12/d12_blue_2.png" id="3_ocs5n"]
+[ext_resource type="Texture2D" uid="uid://brv20hjoapjln" path="res://assets/dice/D12/d12_blue_3.png" id="4_rtet8"]
+[ext_resource type="Texture2D" uid="uid://b4y176uf35ab1" path="res://assets/dice/D12/d12_blue_4.png" id="5_xnetd"]
+[ext_resource type="Texture2D" uid="uid://dqjc0nvjfeipm" path="res://assets/dice/D12/d12_blue_5.png" id="6_xma2v"]
+[ext_resource type="Texture2D" uid="uid://bpeg6f7iym4di" path="res://assets/dice/D12/d12_blue_6.png" id="7_fbobw"]
+[ext_resource type="Texture2D" uid="uid://bm54b2v1kn88v" path="res://assets/dice/D12/d12_blue_7.png" id="8_xxsw8"]
+[ext_resource type="Texture2D" uid="uid://ybvwjcxprpo3" path="res://assets/dice/D12/d12_blue_8.png" id="9_6s7xl"]
+[ext_resource type="Texture2D" uid="uid://bhn657683kp0n" path="res://assets/dice/D12/d12_blue_9.png" id="10_cdcy1"]
+[ext_resource type="Texture2D" uid="uid://nkyrkw83ocek" path="res://assets/dice/D12/d12_blue_10.png" id="11_d5rto"]
+[ext_resource type="Texture2D" uid="uid://c6wa7tqloroju" path="res://assets/dice/D12/d12_blue_11.png" id="12_m1u8q"]
+[ext_resource type="Texture2D" uid="uid://bl8nxmfsf8tfc" path="res://assets/dice/D12/d12_blue_12.png" id="13_q8rsj"]
+
+[node name="shadow_d12" type="TextureRect"]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("1_scmxm")
+expand_mode = 1
+script = ExtResource("2_ocs5n")
+textures = Array[Texture2D]([ExtResource("1_scmxm"), ExtResource("3_ocs5n"), ExtResource("4_rtet8"), ExtResource("5_xnetd"), ExtResource("6_xma2v"), ExtResource("7_fbobw"), ExtResource("8_xxsw8"), ExtResource("9_6s7xl"), ExtResource("10_cdcy1"), ExtResource("11_d5rto"), ExtResource("12_m1u8q"), ExtResource("13_q8rsj")])
+type = 1

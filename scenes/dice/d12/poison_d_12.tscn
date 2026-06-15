@@ -1,0 +1,24 @@
+[gd_scene load_steps=14 format=3 uid="uid://d1cq15c2502ph"]
+
+[ext_resource type="Texture2D" uid="uid://knjhte62osyi" path="res://assets/dice/D12/d12_green_1.png" id="1_3k237"]
+[ext_resource type="Script" uid="uid://cr13mcbmm18dk" path="res://scripts/Die.gd" id="2_6g8y0"]
+[ext_resource type="Texture2D" uid="uid://bfnrth0nedk03" path="res://assets/dice/D12/d12_green_2.png" id="3_6g8y0"]
+[ext_resource type="Texture2D" uid="uid://b6lopytsd4gvd" path="res://assets/dice/D12/d12_green_3.png" id="4_50s0c"]
+[ext_resource type="Texture2D" uid="uid://burveks0a8uu7" path="res://assets/dice/D12/d12_green_4.png" id="5_8bu2n"]
+[ext_resource type="Texture2D" uid="uid://bjyaxo1chn8d1" path="res://assets/dice/D12/d12_green_5.png" id="6_scev7"]
+[ext_resource type="Texture2D" uid="uid://c6vb422bfui5w" path="res://assets/dice/D12/d12_green_6.png" id="7_nyqw8"]
+[ext_resource type="Texture2D" uid="uid://du3wq0atvesc1" path="res://assets/dice/D12/d12_green_7.png" id="8_itbdu"]
+[ext_resource type="Texture2D" uid="uid://cx10fsgwwqtjk" path="res://assets/dice/D12/d12_green_8.png" id="9_fluqm"]
+[ext_resource type="Texture2D" uid="uid://bprnxlcua2ei" path="res://assets/dice/D12/d12_green_9.png" id="10_60uku"]
+[ext_resource type="Texture2D" uid="uid://daxou6i23i85e" path="res://assets/dice/D12/d12_green_10.png" id="11_fwors"]
+[ext_resource type="Texture2D" uid="uid://bj65hvmcf3r6g" path="res://assets/dice/D12/d12_green_11.png" id="12_hybht"]
+[ext_resource type="Texture2D" uid="uid://b4q1nu5kbtsa7" path="res://assets/dice/D12/d12_green_12.png" id="13_mfm7h"]
+
+[node name="poison_d12" type="TextureRect"]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("1_3k237")
+expand_mode = 1
+script = ExtResource("2_6g8y0")
+textures = Array[Texture2D]([ExtResource("1_3k237"), ExtResource("3_6g8y0"), ExtResource("4_50s0c"), ExtResource("5_8bu2n"), ExtResource("6_scev7"), ExtResource("7_nyqw8"), ExtResource("8_itbdu"), ExtResource("9_fluqm"), ExtResource("10_60uku"), ExtResource("11_fwors"), ExtResource("12_hybht"), ExtResource("13_mfm7h")])
+type = 2
