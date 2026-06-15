@@ -1,10 +1,12 @@
-[gd_scene load_steps=54 format=3 uid="uid://h0tkavgsur3u"]
+[gd_scene load_steps=56 format=3 uid="uid://h0tkavgsur3u"]
 
 [ext_resource type="PackedScene" uid="uid://bkqhk6hh1jtda" path="res://scenes/character_choice.tscn" id="1_70qf6"]
 [ext_resource type="Script" uid="uid://clm26km1ee108" path="res://scripts/character_selection_grid.gd" id="1_glnfu"]
 [ext_resource type="Script" uid="uid://dsvxcl2afq2n" path="res://scripts/character_selection_screen.gd" id="1_r1o3c"]
 [ext_resource type="Texture2D" uid="uid://bbqs34tgey2gf" path="res://assets/characters/choices/tony_1.jpg" id="2_0oen6"]
+[ext_resource type="Script" uid="uid://clfcclnsc2i05" path="res://scripts/classic_character_selection_strategy.gd" id="2_anuij"]
 [ext_resource type="Texture2D" uid="uid://d2xheb87qc5a" path="res://assets/characters/choices/tanya_2.jpg" id="3_gxr2e"]
+[ext_resource type="Script" uid="uid://dnhqjgrxdg150" path="res://scripts/classic_tag_character_selection_strategy.gd" id="3_nbhe3"]
 [ext_resource type="Texture2D" uid="uid://b6q3uu0kwh5wf" path="res://assets/characters/portraits/button-men_1.jpg" id="3_rgxyb"]
 [ext_resource type="Texture2D" uid="uid://bccgcwnk2cbnv" path="res://assets/characters/choices/hollis_3.jpg" id="4_7ofbe"]
 [ext_resource type="Texture2D" uid="uid://c5pjg11u3df1c" path="res://assets/characters/choices/delia_4.jpg" id="5_7k72v"]
@@ -65,19 +67,57 @@ script = ExtResource("1_r1o3c")
 title_screen = "res://scenes/title_screen.tscn"
 combat_screen = "res://scenes/combat_screen.tscn"
 
-[node name="Player1Texture" type="TextureRect" parent="."]
+[node name="Strategies" type="Node" parent="."]
+
+[node name="ClassicStrategy" type="Node" parent="Strategies"]
+script = ExtResource("2_anuij")
+
+[node name="ClassicTagStrategy" type="Node" parent="Strategies"]
+script = ExtResource("3_nbhe3")
+
+[node name="Player1Textures" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.25
+anchor_bottom = 1.0
+
+[node name="Player1Texture1" type="TextureRect" parent="Player1Textures"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.25
+anchor_right = 0.9
+anchor_bottom = 0.7
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Player1Texture2" type="TextureRect" parent="Player1Textures"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 1.0
 anchor_bottom = 1.0
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Player2Texture" type="TextureRect" parent="."]
+[node name="Player2Textures" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 0.75
 anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Player2Texture1" type="TextureRect" parent="Player2Textures"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.7
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Player2Texture2" type="TextureRect" parent="Player2Textures"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.3
+anchor_right = 0.9
 anchor_bottom = 1.0
 expand_mode = 1
 stretch_mode = 5
