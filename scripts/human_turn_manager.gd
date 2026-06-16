@@ -4,12 +4,14 @@ class_name HumanTurnManager
 # emit this before wiping the arrays
 signal attacked(selected_p1_dice: Array[Die], selected_p2_dice: Array[Die])
 signal skipped()
+signal tag_out()
 
 @export var attack_button: Button
 @export var clear_button: Button
 @export var skip_button: Button
-@export var p1_dice: Control
-@export var p2_dice: Control
+@export var tag_button: Button
+
+const HUMAN_DIE_INDEX = 2
 
 var _enabled: bool = false
 var _attack_type: PossibleMove.AttackType = PossibleMove.AttackType.INVALID
@@ -38,17 +40,27 @@ func on_die_clicked(die: Die) -> void:
 	
 	queue_redraw()
 
-func enable() -> void:
+func enable( \
+	_p1_dice: Control, \
+	_p2_dice: Control, \
+	_inactive_p1_dice: Control \
+) -> void:
 	_enabled = true
-	attack_button.visible = MoveHelper.has_possible_move(p1_dice, p2_dice)
+	attack_button.visible = MoveHelper.has_possible_move(_p1_dice, _p2_dice)
 	clear_button.visible = attack_button.visible
-	skip_button.visible = not attack_button.visible
+	if GameConfig.player1_characters.size() <= 1:
+		skip_button.visible = not attack_button.visible
+		tag_button.visible = false
+	else:
+		tag_button.visible = not attack_button.visible and not MoveHelper.is_defeated(_inactive_p1_dice)
+		skip_button.visible = not attack_button.visible and not tag_button.visible
 
 func disable() -> void:
 	_enabled = false
 	attack_button.visible = false
 	clear_button.visible = false
 	skip_button.visible = false
+	tag_button.visible = false
 
 ######################
 
@@ -156,6 +168,13 @@ func _on_clear_button_pressed() -> void:
 
 func _on_skip_button_pressed() -> void:
 	skipped.emit()
+	selected_p1_dice = []
+	selected_p2_dice = []
+	queue_redraw()
+
+
+func _on_tag_button_pressed() -> void:
+	tag_out.emit()
 	selected_p1_dice = []
 	selected_p2_dice = []
 	queue_redraw()

@@ -76,3 +76,11 @@ static func _combo_has_rush_die(combo: Array[Die]) -> bool:
 		if die.type == Die.Type.RUSH:
 			return true
 	return false
+
+static func is_defeated(dice: Control) -> bool:
+	for child in dice.get_children():
+		var slot = child as CombatDieSlot
+		var die = slot.get_die()
+		if die.visible:
+			return false
+	return true

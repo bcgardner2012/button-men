@@ -17,7 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_icss1")
 game_over_screen = "res://scenes/game_over_screen.tscn"
 
-[node name="HumanTurnManager" type="Control" parent="." node_paths=PackedStringArray("attack_button", "clear_button", "skip_button", "p1_dice", "p2_dice")]
+[node name="HumanTurnManager" type="Control" parent="." node_paths=PackedStringArray("attack_button", "clear_button", "skip_button", "tag_button")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -25,16 +25,13 @@ script = ExtResource("2_ts8ml")
 attack_button = NodePath("../Buttons/AttackButton")
 clear_button = NodePath("../Buttons/ClearButton")
 skip_button = NodePath("../Buttons/SkipButton")
-p1_dice = NodePath("../Player1Dice")
-p2_dice = NodePath("../Player2Dice")
+tag_button = NodePath("../Buttons/TagButton")
 
-[node name="AITurnManager" type="Control" parent="." node_paths=PackedStringArray("p1_dice", "p2_dice")]
+[node name="AITurnManager" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_pc4bt")
-p1_dice = NodePath("../Player1Dice")
-p2_dice = NodePath("../Player2Dice")
 
 [node name="Player1Texture" type="TextureRect" parent="."]
 layout_mode = 1
@@ -294,6 +291,172 @@ texture = ExtResource("2_42k13")
 expand_mode = 1
 flip_h = true
 
+[node name="Tag1Dice" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 0.05
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="Slot" type="Control" parent="Tag1Dice"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+script = ExtResource("3_ts8ml")
+player = 1
+
+[node name="LeftArrow" type="TextureRect" parent="Tag1Dice/Slot"]
+visible = false
+layout_mode = 0
+offset_left = -60.799988
+offset_top = -2.880005
+offset_right = -5.799988
+offset_bottom = 52.119995
+texture = ExtResource("2_42k13")
+expand_mode = 1
+
+[node name="RightArrow" type="TextureRect" parent="Tag1Dice/Slot"]
+visible = false
+layout_mode = 0
+offset_left = 55.200012
+offset_top = -2.880005
+offset_right = 110.20001
+offset_bottom = 52.119995
+texture = ExtResource("2_42k13")
+expand_mode = 1
+flip_h = true
+
+[node name="Slot2" type="Control" parent="Tag1Dice"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ts8ml")
+player = 1
+
+[node name="LeftArrow" type="TextureRect" parent="Tag1Dice/Slot2"]
+visible = false
+layout_mode = 0
+offset_left = -60.799988
+offset_top = -2.880005
+offset_right = -5.799988
+offset_bottom = 52.119995
+texture = ExtResource("2_42k13")
+expand_mode = 1
+
+[node name="RightArrow" type="TextureRect" parent="Tag1Dice/Slot2"]
+visible = false
+layout_mode = 0
+offset_left = 55.200012
+offset_top = -2.880005
+offset_right = 110.20001
+offset_bottom = 52.119995
+texture = ExtResource("2_42k13")
+expand_mode = 1
+flip_h = true
+
+[node name="Slot3" type="Control" parent="Tag1Dice"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ts8ml")
+player = 1
+
+[node name="LeftArrow" type="TextureRect" parent="Tag1Dice/Slot3"]
+visible = false
+layout_mode = 0
+offset_left = -60.799988
+offset_top = -2.880005
+offset_right = -5.799988
+offset_bottom = 52.119995
+texture = ExtResource("2_42k13")
+expand_mode = 1
+
+[node name="RightArrow" type="TextureRect" parent="Tag1Dice/Slot3"]
+visible = false
+layout_mode = 0
+offset_left = 55.200012
+offset_top = -2.880005
+offset_right = 110.20001
+offset_bottom = 52.119995
+texture = ExtResource("2_42k13")
+expand_mode = 1
+flip_h = true
+
+[node name="Slot4" type="Control" parent="Tag1Dice"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ts8ml")
+player = 1
+
+[node name="LeftArrow" type="TextureRect" parent="Tag1Dice/Slot4"]
+visible = false
+layout_mode = 0
+offset_left = -60.799988
+offset_top = -2.880005
+offset_right = -5.799988
+offset_bottom = 52.119995
+texture = ExtResource("2_42k13")
+expand_mode = 1
+
+[node name="RightArrow" type="TextureRect" parent="Tag1Dice/Slot4"]
+visible = false
+layout_mode = 0
+offset_left = 55.200012
+offset_top = -2.880005
+offset_right = 110.20001
+offset_bottom = 52.119995
+texture = ExtResource("2_42k13")
+expand_mode = 1
+flip_h = true
+
+[node name="Slot5" type="Control" parent="Tag1Dice"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.8
+anchor_right = 0.5
+anchor_bottom = 0.8
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ts8ml")
+player = 1
+
+[node name="LeftArrow" type="TextureRect" parent="Tag1Dice/Slot5"]
+visible = false
+layout_mode = 0
+offset_left = -60.799988
+offset_top = -2.880005
+offset_right = -5.799988
+offset_bottom = 52.119995
+texture = ExtResource("2_42k13")
+expand_mode = 1
+
+[node name="RightArrow" type="TextureRect" parent="Tag1Dice/Slot5"]
+visible = false
+layout_mode = 0
+offset_left = 55.200012
+offset_top = -2.880005
+offset_right = 110.20001
+offset_bottom = 52.119995
+texture = ExtResource("2_42k13")
+expand_mode = 1
+flip_h = true
+
 [node name="Player2Dice" type="Control" parent="."]
 layout_mode = 1
 anchor_left = 0.5
@@ -344,6 +507,67 @@ script = ExtResource("3_ts8ml")
 player = 2
 
 [node name="Slot5" type="Control" parent="Player2Dice"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.8
+anchor_right = 0.5
+anchor_bottom = 0.8
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ts8ml")
+player = 2
+
+[node name="Tag2Dice" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.05
+anchor_right = 0.7
+anchor_bottom = 1.0
+
+[node name="Slot" type="Control" parent="Tag2Dice"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+script = ExtResource("3_ts8ml")
+player = 2
+
+[node name="Slot2" type="Control" parent="Tag2Dice"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ts8ml")
+player = 2
+
+[node name="Slot3" type="Control" parent="Tag2Dice"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ts8ml")
+player = 2
+
+[node name="Slot4" type="Control" parent="Tag2Dice"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ts8ml")
+player = 2
+
+[node name="Slot5" type="Control" parent="Tag2Dice"]
 layout_mode = 1
 anchor_left = 0.5
 anchor_top = 0.8
@@ -424,8 +648,21 @@ grow_horizontal = 2
 grow_vertical = 0
 text = " Clear "
 
+[node name="TagButton" type="Button" parent="Buttons"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -18.0
+offset_right = 18.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Tag Out"
+
 [connection signal="attacked" from="HumanTurnManager" to="." method="_on_human_turn_manager_attacked"]
 [connection signal="skipped" from="HumanTurnManager" to="." method="_on_human_turn_manager_skipped"]
+[connection signal="tag_out" from="HumanTurnManager" to="." method="_on_human_turn_manager_tag_out"]
 [connection signal="swing_die_set" from="Player1Dice/Slot" to="." method="_on_slot_swing_die_set"]
 [connection signal="gui_input" from="Player1Dice/Slot/LeftArrow" to="Player1Dice/Slot" method="_on_left_arrow_gui_input"]
 [connection signal="gui_input" from="Player1Dice/Slot/RightArrow" to="Player1Dice/Slot" method="_on_right_arrow_gui_input"]
@@ -441,7 +678,23 @@ text = " Clear "
 [connection signal="swing_die_set" from="Player1Dice/Slot5" to="." method="_on_slot_swing_die_set"]
 [connection signal="gui_input" from="Player1Dice/Slot5/LeftArrow" to="Player1Dice/Slot5" method="_on_left_arrow_gui_input"]
 [connection signal="gui_input" from="Player1Dice/Slot5/RightArrow" to="Player1Dice/Slot5" method="_on_right_arrow_gui_input"]
+[connection signal="swing_die_set" from="Tag1Dice/Slot" to="." method="_on_slot_swing_die_set"]
+[connection signal="gui_input" from="Tag1Dice/Slot/LeftArrow" to="Tag1Dice/Slot" method="_on_left_arrow_gui_input"]
+[connection signal="gui_input" from="Tag1Dice/Slot/RightArrow" to="Tag1Dice/Slot" method="_on_right_arrow_gui_input"]
+[connection signal="swing_die_set" from="Tag1Dice/Slot2" to="." method="_on_slot_swing_die_set"]
+[connection signal="gui_input" from="Tag1Dice/Slot2/LeftArrow" to="Tag1Dice/Slot2" method="_on_left_arrow_gui_input"]
+[connection signal="gui_input" from="Tag1Dice/Slot2/RightArrow" to="Tag1Dice/Slot2" method="_on_right_arrow_gui_input"]
+[connection signal="swing_die_set" from="Tag1Dice/Slot3" to="." method="_on_slot_swing_die_set"]
+[connection signal="gui_input" from="Tag1Dice/Slot3/LeftArrow" to="Tag1Dice/Slot3" method="_on_left_arrow_gui_input"]
+[connection signal="gui_input" from="Tag1Dice/Slot3/RightArrow" to="Tag1Dice/Slot3" method="_on_right_arrow_gui_input"]
+[connection signal="swing_die_set" from="Tag1Dice/Slot4" to="." method="_on_slot_swing_die_set"]
+[connection signal="gui_input" from="Tag1Dice/Slot4/LeftArrow" to="Tag1Dice/Slot4" method="_on_left_arrow_gui_input"]
+[connection signal="gui_input" from="Tag1Dice/Slot4/RightArrow" to="Tag1Dice/Slot4" method="_on_right_arrow_gui_input"]
+[connection signal="swing_die_set" from="Tag1Dice/Slot5" to="." method="_on_slot_swing_die_set"]
+[connection signal="gui_input" from="Tag1Dice/Slot5/LeftArrow" to="Tag1Dice/Slot5" method="_on_left_arrow_gui_input"]
+[connection signal="gui_input" from="Tag1Dice/Slot5/RightArrow" to="Tag1Dice/Slot5" method="_on_right_arrow_gui_input"]
 [connection signal="pressed" from="Buttons/ConfirmButton" to="." method="_on_confirm_button_pressed"]
 [connection signal="pressed" from="Buttons/AttackButton" to="HumanTurnManager" method="_on_attack_button_pressed"]
 [connection signal="pressed" from="Buttons/SkipButton" to="HumanTurnManager" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Buttons/ClearButton" to="HumanTurnManager" method="_on_clear_button_pressed"]
+[connection signal="pressed" from="Buttons/TagButton" to="HumanTurnManager" method="_on_tag_button_pressed"]
