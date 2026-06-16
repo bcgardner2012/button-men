@@ -16,6 +16,10 @@ func on_ui_cancel( \
 		p1_textures[GameConfig.player1_characters.size()].texture = null
 	else:
 		get_tree().change_scene_to_file(title_screen)
+	
+	RcpNode.transmit("send_message", {
+		"event_name": "E_CHAR_REMOVE"
+	})
 
 # return true if conditions are met for starting a game in the selected GameMode
 func on_ui_accept() -> bool:

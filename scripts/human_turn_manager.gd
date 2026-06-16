@@ -175,6 +175,12 @@ func _on_skip_button_pressed() -> void:
 
 func _on_tag_button_pressed() -> void:
 	tag_out.emit()
+	
+	RcpNode.transmit("send_message", {
+		"event_name": "tag",
+		"player": 1
+	})
+	
 	selected_p1_dice = []
 	selected_p2_dice = []
 	queue_redraw()

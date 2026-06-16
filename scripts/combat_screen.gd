@@ -429,6 +429,11 @@ func _ai_tag_out() -> void:
 	_p2_index %= 2
 	$Player2Texture.texture = GameConfig.player2_characters[_p2_index].portrait
 	
+	RcpNode.transmit("send_message", {
+		"event_name": "tag",
+		"player": 2
+	})
+	
 	# turn over
 	_set_state_p1_turn()
 
