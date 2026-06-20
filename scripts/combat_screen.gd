@@ -119,8 +119,6 @@ func _round_setup_player2(character: CharacterChoice, dice_node: Control) -> voi
 		
 		var slot = dice_node.get_child(i) as CombatDieSlot
 		slot.add_child(die)
-		#if die.textures.size() == 1: # X
-		#	pass # In classic, P2 is AI, randomly choose
 		i += 1
 
 func _new_round_cleanup() -> void:
@@ -206,22 +204,6 @@ func _process(_delta: float) -> void:
 				_inactive_p1_dice, \
 				State.P2_TURN_TELEGRAPH\
 			)
-			# identify possible moves, v1: select the one that immediately grants most points
-			#$AITurnManager.determine_possible_moves(_active_p1_dice, _active_p2_dice)
-			#if $AITurnManager.possible_moves.size() > 0:
-				# first entry takes the largest die possible, PMs sorted in order of die score
-				#$AITurnManager.set_chosen_move(0)
-				#_state = State.P2_TURN_TELEGRAPH
-			#else:
-				# skip or tag
-				#if not MoveHelper.is_defeated(_inactive_p2_dice):
-				#	_ai_tag_out()
-				#else:
-				#	_skip_count += 1
-				#	if _skip_count >= 2:
-				#		_state = State.ROUND_END
-				#	else:
-				#		_set_state_p1_turn()
 		
 		State.P2_TURN_TELEGRAPH:
 			_ai_telegraph(_delta, "P2_TURN_TELEGRAPH", State.P2_TURN_EXECUTE)
@@ -229,21 +211,6 @@ func _process(_delta: float) -> void:
 		State.P2_TURN_EXECUTE:
 			print("P2_TURN_EXECUTE")
 			_ai_execute()
-			#if $AITurnManager.chosen_move == null:
-				# skip
-			#	_skip_count += 1
-			#	if _skip_count >= 2:
-			#		_state = State.ROUND_END
-			#	else:
-			#		_set_state_p1_turn()
-			#else:
-			#	_skip_count = 0
-			#	_p1_dice_lost += $AITurnManager.chosen_move.inactive_player_dice.size()
-			#	$AITurnManager.execute_chosen_move()
-			#	_set_state_p1_turn()
-			# cleanup AI vars
-			#_telegraphing = false
-			#_telegraph_timer = 0.0
 		
 		State.ROUND_END:
 			print("Ending the round")
