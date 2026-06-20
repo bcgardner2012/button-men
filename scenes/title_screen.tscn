@@ -193,6 +193,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TournamentModeButton" type="ColorRect" parent="GameModeButtons"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -223,6 +224,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TagTournamentModeButton" type="ColorRect" parent="GameModeButtons"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
