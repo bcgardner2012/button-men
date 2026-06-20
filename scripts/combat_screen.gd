@@ -6,6 +6,8 @@ enum State {
 	SETUP, 
 	INITIATIVE,
 	P1_TURN,
+	P1_TURN_TELEGRAPH, # Only for watch mode
+	P1_TURN_EXECUTE, # Only for watch mode
 	P2_TURN, # determine possible moves and queue one
 	P2_TURN_TELEGRAPH, # draw lines to demonstrate the queued move, hold for some time
 	P2_TURN_EXECUTE, # execute queued move and cleanup
@@ -75,6 +77,8 @@ var _state: State = State.NONE
 
 func _ready() -> void:
 	_round_setup()
+	if GameConfig.is_watch_mode:
+		_state = State.SETUP
 
 func _round_setup() -> void:
 	$Player1Texture.texture = GameConfig.player1_characters[0].portrait
@@ -99,10 +103,11 @@ func _round_setup_player1(character: CharacterChoice, dice_node: Control) -> int
 		var slot = dice_node.get_child(i) as CombatDieSlot
 		slot.add_child(die)
 		if die.textures.size() == 1: # X
-			slot.show_arrows()
-			swing_dice_count += 1
-			$Buttons/ConfirmButton.visible = true
-			$Buttons/ConfirmButton.disabled = true
+			if not GameConfig.is_watch_mode:
+				slot.show_arrows()
+				swing_dice_count += 1
+				$Buttons/ConfirmButton.visible = true
+				$Buttons/ConfirmButton.disabled = true
 		i += 1
 	return swing_dice_count
 
@@ -150,7 +155,19 @@ func _process(_delta: float) -> void:
 			print("SETUP")
 			_new_round_cleanup()
 			_round_setup()
-			_state = State.NONE
+			if GameConfig.is_watch_mode:
+				_confirm_ai_dice($Player1Dice, HUMAN_DIE_INDEX)
+				if GameConfig.player1_characters.size() > 1:
+					_confirm_ai_dice($Tag1Dice, HUMAN_DIE_INDEX)
+				
+				_confirm_ai_dice($Player2Dice, AI_DIE_INDEX)
+				if GameConfig.player2_characters.size() > 1:
+					_confirm_ai_dice($Tag2Dice, AI_DIE_INDEX)
+				
+				_finalize_dice()
+			else:
+				_state = State.NONE
+		
 		State.INITIATIVE:
 			print("INITIATIVE")
 			var _active_player = _do_initiative_rolls()
@@ -161,53 +178,72 @@ func _process(_delta: float) -> void:
 			else:
 				print_debug("Initiative state logic is broken, no player is active")
 				_state = State.FATAL_ERROR
-		# State.P1_TURN: # driven by the player, use signals
+		
+		State.P1_TURN: # driven by the player, use signals
+			print("P1_TURN")
+			if GameConfig.is_watch_mode:
+				_ai_turn_state_logic(\
+					_active_p1_dice, \
+					_active_p2_dice, \
+					_inactive_p1_dice, \
+					_inactive_p2_dice, \
+					State.P1_TURN_TELEGRAPH\
+				)
+		
+		State.P1_TURN_TELEGRAPH:
+			_ai_telegraph(_delta, "P1_TURN_TELEGRAPH", State.P1_TURN_EXECUTE)
+		
+		State.P1_TURN_EXECUTE:
+			print("P1_TURN_EXECUTE")
+			_ai_execute()
+		
 		State.P2_TURN:
 			print("P2_TURN")
+			_ai_turn_state_logic(\
+				_active_p2_dice, \
+				_active_p1_dice, \
+				_inactive_p2_dice, \
+				_inactive_p1_dice, \
+				State.P2_TURN_TELEGRAPH\
+			)
 			# identify possible moves, v1: select the one that immediately grants most points
-			$AITurnManager.determine_possible_moves(_active_p1_dice, _active_p2_dice)
-			if $AITurnManager.possible_moves.size() > 0:
+			#$AITurnManager.determine_possible_moves(_active_p1_dice, _active_p2_dice)
+			#if $AITurnManager.possible_moves.size() > 0:
 				# first entry takes the largest die possible, PMs sorted in order of die score
-				$AITurnManager.set_chosen_move(0)
-				_state = State.P2_TURN_TELEGRAPH
-			else:
+				#$AITurnManager.set_chosen_move(0)
+				#_state = State.P2_TURN_TELEGRAPH
+			#else:
 				# skip or tag
-				if not MoveHelper.is_defeated(_inactive_p2_dice):
-					_ai_tag_out()
-				else:
-					_skip_count += 1
-					if _skip_count >= 2:
-						_state = State.ROUND_END
-					else:
-						_set_state_p1_turn()
+				#if not MoveHelper.is_defeated(_inactive_p2_dice):
+				#	_ai_tag_out()
+				#else:
+				#	_skip_count += 1
+				#	if _skip_count >= 2:
+				#		_state = State.ROUND_END
+				#	else:
+				#		_set_state_p1_turn()
 		
 		State.P2_TURN_TELEGRAPH:
-			if not _telegraphing:
-				print("P2_TURN_TELEGRAPH")
-				$AITurnManager.draw_chosen_move()
-				_telegraphing = true
-			else:
-				_telegraph_timer += _delta
-				if _telegraph_timer >= TELEGRAPH_TIME:
-					_state = State.P2_TURN_EXECUTE
+			_ai_telegraph(_delta, "P2_TURN_TELEGRAPH", State.P2_TURN_EXECUTE)
 		
 		State.P2_TURN_EXECUTE:
 			print("P2_TURN_EXECUTE")
-			if $AITurnManager.chosen_move == null:
+			_ai_execute()
+			#if $AITurnManager.chosen_move == null:
 				# skip
-				_skip_count += 1
-				if _skip_count >= 2:
-					_state = State.ROUND_END
-				else:
-					_set_state_p1_turn()
-			else:
-				_skip_count = 0
-				_p1_dice_lost += $AITurnManager.chosen_move.inactive_player_dice.size()
-				$AITurnManager.execute_chosen_move()
-				_set_state_p1_turn()
+			#	_skip_count += 1
+			#	if _skip_count >= 2:
+			#		_state = State.ROUND_END
+			#	else:
+			#		_set_state_p1_turn()
+			#else:
+			#	_skip_count = 0
+			#	_p1_dice_lost += $AITurnManager.chosen_move.inactive_player_dice.size()
+			#	$AITurnManager.execute_chosen_move()
+			#	_set_state_p1_turn()
 			# cleanup AI vars
-			_telegraphing = false
-			_telegraph_timer = 0.0
+			#_telegraphing = false
+			#_telegraph_timer = 0.0
 		
 		State.ROUND_END:
 			print("Ending the round")
@@ -257,7 +293,7 @@ func _get_score(my_dice: Array[Control], other_dice: Array[Control]) -> float:
 		for child in ctrl.get_children():
 			var slot = child as CombatDieSlot
 			var die = slot.get_die()
-			if die.visible:
+			if die != null and die.visible:
 				if die.type == Die.Type.POISON:
 					score -= die.textures.size()
 				else:
@@ -266,7 +302,7 @@ func _get_score(my_dice: Array[Control], other_dice: Array[Control]) -> float:
 		for child in ctrl.get_children():
 			var slot = child as CombatDieSlot
 			var die = slot.get_die()
-			if not die.visible:
+			if die != null and not die.visible:
 				if die.type == Die.Type.POISON:
 					score -= die.textures.size() * 0.5
 				else:
@@ -303,24 +339,28 @@ func _on_confirm_button_pressed() -> void:
 		$Buttons/ConfirmButton.visible = false
 	
 		# set NPC swing dice
-		_confirm_ai_dice($Player2Dice)
+		_confirm_ai_dice($Player2Dice, AI_DIE_INDEX)
 		if GameConfig.player2_characters.size() > 1:
-			_confirm_ai_dice($Tag2Dice)
+			_confirm_ai_dice($Tag2Dice, AI_DIE_INDEX)
 	
 		# Jumping straight into initiative logic doesn't allow time for newly created dice to initialize
 		# Set state and let _process be the driver for state logic.
-		_state = State.INITIATIVE
-		_confirmation_count = 0
-		_active_p1_dice = $Player1Dice
-		_active_p2_dice = $Player2Dice
-		_inactive_p1_dice = $Tag1Dice
-		_inactive_p2_dice = $Tag2Dice
+		_finalize_dice()
+
+func _finalize_dice() -> void:
+	_state = State.INITIATIVE
+	_confirmation_count = 0
+	_active_p1_dice = $Player1Dice
+	_active_p2_dice = $Player2Dice
+	_inactive_p1_dice = $Tag1Dice
+	_inactive_p2_dice = $Tag2Dice
+	if not GameConfig.is_watch_mode:
 		_make_dice_clickable()
 
-func _confirm_ai_dice(dice_node: Control) -> void:
+func _confirm_ai_dice(dice_node: Control, die_index: int) -> void:
 	for child in dice_node.get_children():
 		var slot = child as CombatDieSlot
-		var die = slot.get_child(AI_DIE_INDEX) as Die
+		var die = slot.get_child(die_index) as Die
 		if die.textures.size() == 1: # X
 			var random_size = DIE_SIZES[randi() % DIE_SIZES.size()]
 			var die_code = random_size + slot.get_suffix(die)
@@ -336,12 +376,14 @@ func _make_dice_clickable() -> void:
 	for child in $Player2Dice.get_children():
 		var d = child.get_child(AI_DIE_INDEX) as Die
 		d.clicked.connect($HumanTurnManager.on_die_clicked)
-	for child in $Tag1Dice.get_children():
-		var d = child.get_child(HUMAN_DIE_INDEX) as Die
-		d.clicked.connect($HumanTurnManager.on_die_clicked)
-	for child in $Tag2Dice.get_children():
-		var d = child.get_child(AI_DIE_INDEX) as Die
-		d.clicked.connect($HumanTurnManager.on_die_clicked)
+	
+	if GameConfig.player1_characters.size() > 1:
+		for child in $Tag1Dice.get_children():
+			var d = child.get_child(HUMAN_DIE_INDEX) as Die
+			d.clicked.connect($HumanTurnManager.on_die_clicked)
+		for child in $Tag2Dice.get_children():
+			var d = child.get_child(AI_DIE_INDEX) as Die
+			d.clicked.connect($HumanTurnManager.on_die_clicked)
 
 func _do_initiative_rolls() -> int:
 	var winner = 0
@@ -414,6 +456,12 @@ func _on_human_turn_manager_tag_out() -> void:
 	_state = State.P2_TURN
 
 func _ai_tag_out() -> void:
+	if _state == State.P1_TURN:
+		_ai_tag_out_p1()
+	else:
+		_ai_tag_out_p2()
+
+func _ai_tag_out_p2() -> void:
 	# swap active dice
 	var tmp = _inactive_p2_dice
 	_inactive_p2_dice = _active_p2_dice
@@ -437,6 +485,30 @@ func _ai_tag_out() -> void:
 	# turn over
 	_set_state_p1_turn()
 
+func _ai_tag_out_p1() -> void:
+	# swap active dice
+	var tmp = _inactive_p1_dice
+	_inactive_p1_dice = _active_p1_dice
+	_active_p1_dice = tmp
+	
+	# show active
+	_active_p1_dice.visible = true
+	_inactive_p1_dice.visible = false
+	_reroll_dice(_active_p1_dice)
+	
+	# show corresponding image
+	_p1_index += 1
+	_p1_index %= 2
+	$Player1Texture.texture = GameConfig.player1_characters[_p1_index].portrait
+	
+	RcpNode.transmit("send_message", {
+		"event_name": "tag",
+		"player": 1
+	})
+	
+	# turn over
+	_state = State.P2_TURN
+
 func _reroll_dice(dice: Control) -> void:
 	for child in dice.get_children():
 		var slot = child as CombatDieSlot
@@ -444,6 +516,66 @@ func _reroll_dice(dice: Control) -> void:
 		if die != null:
 			die.roll()
 
+func _ai_turn_state_logic(\
+	my_active_dice: Control, \
+	other_active_dice: Control, \
+	my_inactive_dice: Control, \
+	other_inactive_dice: Control, \
+	telegraph_state: State \
+) -> void:
+	$AITurnManager.determine_possible_moves(other_active_dice, my_active_dice)
+	if $AITurnManager.possible_moves.size() > 0:
+		# first entry takes the largest die possible, PMs sorted in order of die score
+		$AITurnManager.set_chosen_move(0)
+		_state = telegraph_state
+	else:
+		# skip or tag
+		if not MoveHelper.is_defeated(my_inactive_dice):
+			_ai_tag_out()
+		else:
+			_skip_count += 1
+			if _skip_count >= 2 or (MoveHelper.is_defeated(other_active_dice) and MoveHelper.is_defeated(other_inactive_dice)):
+				_state = State.ROUND_END
+			elif _state == State.P2_TURN:
+				_set_state_p1_turn()
+			else:
+				_state = State.P2_TURN
+
+func _ai_telegraph(_delta: float, debug_msg: String, next_state: State) -> void:
+	if not _telegraphing:
+		print(debug_msg)
+		$AITurnManager.draw_chosen_move()
+		_telegraphing = true
+	else:
+		_telegraph_timer += _delta
+		if _telegraph_timer >= TELEGRAPH_TIME:
+			_state = next_state
+
+func _ai_execute() -> void:
+	if $AITurnManager.chosen_move == null:
+		# skip
+		_skip_count += 1
+		if _skip_count >= 2:
+			_state = State.ROUND_END
+		elif _state == State.P2_TURN_EXECUTE:
+			_set_state_p1_turn()
+		else:
+			_state = State.P2_TURN
+	else:
+		_skip_count = 0
+		if _state == State.P2_TURN_EXECUTE:
+			_p1_dice_lost += $AITurnManager.chosen_move.inactive_player_dice.size()
+			$AITurnManager.execute_chosen_move()
+			_set_state_p1_turn()
+		else:
+			_p2_dice_lost += $AITurnManager.chosen_move.inactive_player_dice.size()
+			$AITurnManager.execute_chosen_move()
+			_state = State.P2_TURN
+	# cleanup AI vars
+	_telegraphing = false
+	_telegraph_timer = 0.0
+
 func _set_state_p1_turn() -> void:
 	_state = State.P1_TURN
-	$HumanTurnManager.enable(_active_p1_dice, _active_p2_dice, _inactive_p1_dice)
+	if not GameConfig.is_watch_mode:
+		$HumanTurnManager.enable(_active_p1_dice, _active_p2_dice, _inactive_p1_dice)

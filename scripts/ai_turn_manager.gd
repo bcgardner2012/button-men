@@ -1,8 +1,6 @@
 extends Control
 class_name AITurnManager
 
-# AI is always Player 2
-
 var possible_moves: Array[PossibleMove]
 var chosen_move: PossibleMove
 
@@ -41,8 +39,8 @@ func draw_chosen_move() -> void:
 	if chosen_move != null:
 		queue_redraw()
 
-func determine_possible_moves(_p1_dice: Control, _p2_dice: Control) -> void:
-	possible_moves = MoveHelper.determine_possible_moves(_p2_dice, _p1_dice)
+func determine_possible_moves(inactive_dice: Control, active_dice: Control) -> void:
+	possible_moves = MoveHelper.determine_possible_moves(active_dice, inactive_dice)
 
 ###########################
 

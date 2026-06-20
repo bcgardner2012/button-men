@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmv8auki5fu38"]
+[gd_scene load_steps=8 format=3 uid="uid://cmv8auki5fu38"]
 
 [ext_resource type="Script" uid="uid://dpllwvkkhwnvg" path="res://scripts/title_screen.gd" id="1_e54dn"]
 [ext_resource type="Texture2D" uid="uid://drna8h0hvbrdj" path="res://assets/buttonmen_boxart.jpg" id="1_fgkus"]
 [ext_resource type="Script" uid="uid://b6qs7rdw6152v" path="res://scripts/new_game_button.gd" id="2_mgrm8"]
 [ext_resource type="Script" uid="uid://c4k2b7nqdua8v" path="res://scripts/quit_button.gd" id="3_s4lrb"]
+[ext_resource type="Script" uid="uid://cxm0w0p6308gx" path="res://scripts/watch_mode_button.gd" id="4_3yumr"]
 [ext_resource type="Script" uid="uid://bve7tkjctjtuf" path="res://scripts/mode_selection_button.gd" id="4_e54dn"]
 [ext_resource type="Script" uid="uid://br5ca3i1ns4co" path="res://scripts/back_button.gd" id="4_mgrm8"]
 
@@ -70,7 +71,7 @@ text = "New Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="ColorRect" parent="InitialButtons"]
+[node name="WatchModeButton" type="ColorRect" parent="InitialButtons" node_paths=PackedStringArray("submenu")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -79,6 +80,34 @@ anchor_bottom = 0.5
 offset_left = 15.0
 offset_top = 15.0
 offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_3yumr")
+submenu = NodePath("../../GameModeButtons")
+to_color = Color(0, 0, 0.7176471, 1)
+animation_time = 0.7
+
+[node name="Label" type="Label" parent="InitialButtons/WatchModeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Watch Mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="ColorRect" parent="InitialButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 45.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -255,6 +284,9 @@ vertical_alignment = 1
 [connection signal="gui_input" from="InitialButtons/NewGameButton" to="InitialButtons/NewGameButton" method="_on_gui_input"]
 [connection signal="mouse_entered" from="InitialButtons/NewGameButton" to="InitialButtons/NewGameButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="InitialButtons/NewGameButton" to="InitialButtons/NewGameButton" method="_on_mouse_exited"]
+[connection signal="gui_input" from="InitialButtons/WatchModeButton" to="InitialButtons/WatchModeButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="InitialButtons/WatchModeButton" to="InitialButtons/WatchModeButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InitialButtons/WatchModeButton" to="InitialButtons/WatchModeButton" method="_on_mouse_exited"]
 [connection signal="gui_input" from="InitialButtons/QuitButton" to="InitialButtons/QuitButton" method="_on_gui_input"]
 [connection signal="mouse_entered" from="InitialButtons/QuitButton" to="InitialButtons/QuitButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="InitialButtons/QuitButton" to="InitialButtons/QuitButton" method="_on_mouse_exited"]

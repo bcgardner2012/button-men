@@ -81,6 +81,6 @@ static func is_defeated(dice: Control) -> bool:
 	for child in dice.get_children():
 		var slot = child as CombatDieSlot
 		var die = slot.get_die()
-		if die.visible:
+		if die != null and die.visible:
 			return false
 	return true
